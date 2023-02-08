@@ -9,9 +9,10 @@ const assertArraysEqual = function(arr1, arr2) {
 
 const middle = function(arr) {
   let newArr;
-  if (arr.length < 3) newArr = [];
-  if (arr.length % 2 !== 0 && arr.length > 3) newArr = arr[(arr.length - 1) / 2];
-  if (arr.length % 2 === 0 && arr.length > 3) newArr = arr.slice(((arr.length / 2) - 1), ((arr.length / 2) + 1));
+  let arrLength = arr.length;
+  if (arrLength < 3) newArr = [];
+  if (arrLength % 2 !== 0 && arrLength >= 3) newArr = arr[(arrLength - 1) / 2];
+  if (arrLength % 2 === 0 && arrLength >= 3) newArr = arr.slice(((arrLength / 2) - 1), ((arrLength / 2) + 1));
   return newArr;
 };
 
