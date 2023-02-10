@@ -1,5 +1,9 @@
 const eqArrays = function(arr1, arr2) {
-  return arr1.toString() === arr2.toString() ? true : false;
+  if (arr1.length !== arr2.length) return false;
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  }
+  return true;
 };
 
 const assertArraysEqual = function(arr1, arr2) {
@@ -8,11 +12,11 @@ const assertArraysEqual = function(arr1, arr2) {
 };
 
 const middle = function(arr) {
-  let newArr;
+  let newArr = [];
   let arrLength = arr.length;
   if (arrLength < 3) newArr = [];
-  if (arrLength % 2 !== 0 && arrLength >= 3) newArr = arr[(arrLength - 1) / 2];
-  if (arrLength % 2 === 0 && arrLength >= 3) newArr = arr.slice(((arrLength / 2) - 1), ((arrLength / 2) + 1));
+  if (arrLength % 2 !== 0 && arrLength >= 3) newArr.push(arr[(arrLength - 1) / 2]);
+  if (arrLength % 2 === 0 && arrLength >= 3) newArr.push(arr.slice(((arrLength / 2) - 1), ((arrLength / 2) + 1)));
   return newArr;
 };
 
