@@ -7,15 +7,15 @@ const assertEqual = function(actual, expected) {
 const eqArrays = function(arr1, arr2) {
   if (arr1.length !== arr2.length) return false;
   for (let i = 0; i < arr1.length; i++) {
-    let item1 = arr1[i];
-    let item2 = arr2[i];
-    let isNumber = !Array.isArray(item1);
+    const item1 = arr1[i];
+    const item2 = arr2[i];
+    const notArray = !Array.isArray(item1);
 
     if (Array.isArray(item1) && !Array.isArray(item2)) return false;
 
     if (Array.isArray(item1)) eqArrays(item1, item2);
     
-    if (isNumber) if (item1 !== item2) return false;
+    if (notArray) if (item1 !== item2) return false;
 
     if (!eqArrays(item1, item2)) return false;
     
