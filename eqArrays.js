@@ -9,12 +9,16 @@ const eqArrays = function(arr1, arr2) {
   for (let i = 0; i < arr1.length; i++) {
     let item1 = arr1[i];
     let item2 = arr2[i];
+    let isNumber = !Array.isArray(item1);
+
     if (Array.isArray(item1) && !Array.isArray(item2)) return false;
-    if (!Array.isArray(item1)) {
-      if (item1 !== item2) return false;
-    }
+
     if (Array.isArray(item1)) eqArrays(item1, item2);
+    
+    if (isNumber) if (item1 !== item2) return false;
+
     if (!eqArrays(item1, item2)) return false;
+    
   }
   return true;
 };
