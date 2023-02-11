@@ -1,17 +1,25 @@
 const assertEqual = function(actual, expected) {
-  console.log(actual === expected ? `✅✅✅ Assertion Passed: ${actual} === ${expected}` : `🔴🔴🔴 Assertion Failed: ${actual} !== ${expected}`);
+  console.log(actual === expected ?
+    `✅✅✅ Assertion Passed: ${actual} === ${expected}` :
+    `🔴🔴🔴 Assertion Failed: ${actual} !== ${expected}`);
 };
 
 const eqArrays = function(arr1, arr2) {
   if (arr1.length !== arr2.length) return false;
   for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) return false;
+    let item1 = arr1[i];
+    let item2 = arr2[i];
+    if (Array.isArray(item1) && !Array.isArray(item2)) return false;
+    if (!Array.isArray(item1)) {
+      if (item1 !== item2) return false;
+    }
+    if (Array.isArray(item1)) eqArrays(item1, item2);
+    if (!eqArrays(item1, item2)) return false;
   }
   return true;
 };
 
 // TEST CODE
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
-assertEqual(eqArrays([1, 2, 3], [3, 2]), false);
-assertEqual(eqArrays([], [3, 2]), false);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false);
