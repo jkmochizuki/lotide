@@ -16,6 +16,7 @@ const eqObjects = function(object1, object2) {
     if (key1 !== key2) return false;
     if (typeof(key1) === typeof({}) && typeof(key2) === typeof({})) eqObjects(key1, key2);
   }
+  
   return true;
 };
 

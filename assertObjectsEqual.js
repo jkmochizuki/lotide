@@ -1,18 +1,4 @@
-const eqArrays = function(arr1, arr2) {
-  if (arr1.length !== arr2.length) return false;
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) return false;
-  }
-  return true;
-};
-
-const eqObjects = function(object1, object2) {
-  const keys1 = Object.keys(object1);
-  const keys2 = Object.keys(object2);
-  for (const key1 of keys1) {
-    return (object1[key1] === object2[key1] || eqArrays(object1[key1], object2[key1])) && keys1.length === keys2.length ? true : false;
-  }
-};
+const eqObjects = require('./eqObjects');
 
 const assertObjectsEqual = function(object1, object2) {
   let result = eqObjects(object1, object2);
@@ -21,10 +7,4 @@ const assertObjectsEqual = function(object1, object2) {
   if (result === false) console.log(`🔴🔴🔴 Assertion Failed: ${inspect(object1)} !== ${inspect(object2)}`);
 };
 
-//TEST CODE
-const multiColorShirtObject = { colors: ["red", "blue"], size: "medium" };
-const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
-assertObjectsEqual(multiColorShirtObject, anotherMultiColorShirtObject);
-
-const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
-assertObjectsEqual(multiColorShirtObject, longSleeveMultiColorShirtObject);
+module.exports = assertObjectsEqual;
