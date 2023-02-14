@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@jkmochizuki/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "lotide library",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/jkmochizuki/lotide.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juliana Keiko",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jkmochizuki/lotide/issues"
